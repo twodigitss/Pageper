@@ -15,9 +15,9 @@ const Home = () => {
   return(
     <div className="grid px-8 py-4 gap-12">
 
-      <div className="flex content-center justify-start gap-8">
+      <div className="flex content-center justify-start gap-8 max-[932px]:justify-center max-[932px]:w-full">
 
-        <div className="flex items-center justify-center gap-4 my-4 max-[700px]:grid-flow-row max-[700px]:justify-items-center">
+        <div className="flex items-center justify-center gap-4 my-4 max-[932px]:justify-center max-[700px]:grid-flow-row max-[700px]:justify-items-center">
             <CurrentDate/>
             <CurrentTime/>
         </div>
