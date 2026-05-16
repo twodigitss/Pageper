@@ -73,6 +73,12 @@ function AppSettings({ isOpen, onClose }: AppSettingsProps){
                 </button>
             </li>
             <li>
+                <button onClick={() => setActiveTab('colorscheme')} className={tabClass('colorscheme')}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-palette"> <path stroke="none" d="M0 0h24v24H0z" fill="none" /> <path d="M12 21a9 9 0 0 1 0 -18c4.97 0 9 3.582 9 8c0 1.06 -.474 2.078 -1.318 2.828c-.844 .75 -1.989 1.172 -3.182 1.172h-2.5a2 2 0 0 0 -1 3.75a1.3 1.3 0 0 1 -1 2.25" /> <path d="M7.5 10.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /> <path d="M11.5 7.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /> <path d="M15.5 10.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /> </svg>
+                    Colorscheme
+                </button>
+            </li>
+            <li>
                 <button onClick={() => setActiveTab('keybinds')} className={tabClass('keybinds')}>
                     <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-square-f9">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -82,12 +88,6 @@ function AppSettings({ isOpen, onClose }: AppSettingsProps){
                       <path d="M10 9h-2v6" />
                     </svg>
                     Keybinds
-                </button>
-            </li>
-            <li>
-                <button onClick={() => setActiveTab('colorscheme')} className={tabClass('colorscheme')}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-palette"> <path stroke="none" d="M0 0h24v24H0z" fill="none" /> <path d="M12 21a9 9 0 0 1 0 -18c4.97 0 9 3.582 9 8c0 1.06 -.474 2.078 -1.318 2.828c-.844 .75 -1.989 1.172 -3.182 1.172h-2.5a2 2 0 0 0 -1 3.75a1.3 1.3 0 0 1 -1 2.25" /> <path d="M7.5 10.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /> <path d="M11.5 7.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /> <path d="M15.5 10.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /> </svg>
-                    Colorscheme
                 </button>
             </li>
             <li>
@@ -117,7 +117,7 @@ function AppSettings({ isOpen, onClose }: AppSettingsProps){
                 <div className="bg-body p-12 rounded-2xl border border-dashed border-text/20 max-w-lg">
                   <h3 className="text-2xl font-bold text-text-hover mb-4">Keyboard Navigation</h3>
                   <div className="flex flex-col gap-4 text-text/70 text-sm">
-                    <p>PagePer supports quick navigation using number sequences:</p>
+                    <p>Pageper supports quick navigation using number sequences:</p>
                     <div className="grid grid-cols-1 gap-3 text-left">
                       <div className="flex items-center gap-3">
                         <kbd className="bg-bg-0 px-2 py-1 rounded border border-text/10 text-brand min-w-8 text-center font-bold">1-9</kbd>
@@ -149,12 +149,12 @@ function AppSettings({ isOpen, onClose }: AppSettingsProps){
 
                 <div className="grid gap-6">
                   <div className="bg-body p-6 text-text rounded-lg border border-transparent hover:border-brand/30 transition-all">
-                    <h4 className="font-bold text-brand mb-2">How to use PagePer?</h4>
-                    <p className="text-sm leading-relaxed">PagePer is your personal startpage. Customize your bookmarks, themes, and keybinds to make it your own.</p>
+                    <h4 className="font-bold text-brand mb-2">How to use Pageper?</h4>
+                    <p className="text-sm leading-relaxed">Pageper is your personal startpage. Customize your bookmarks, themes, and keybinds to make it your own.</p>
                   </div>
                   <div className="bg-body p-6 text-text rounded-lg border border-transparent hover:border-brand/30 transition-all">
                     <h4 className="font-bold text-brand mb-2">Need help?</h4>
-                    <p className="text-sm leading-relaxed mb-4">Check the GitHub repository for documentation, issue reporting, and community updates.</p>
+                    <p className="text-sm leading-relaxed mb-4">Check the GitHub repository for documentation, issue reporting, and updates.</p>
                     <a 
                       href="https://github.com/twodigitss/pageper" 
                       target="_blank" 
@@ -177,7 +177,7 @@ function AppSettings({ isOpen, onClose }: AppSettingsProps){
     </div>
 
     <div className="flex justify-between items-center mt-6 pt-4 border-t border-body">
-      <p className="text-[10px] opacity-30 italic">PagePer v0.4.2 - Experimental Build</p>
+      <p className="text-[10px] opacity-30 italic">Pageper v0.4.2 - Experimental Build</p>
       <button className="all-unset flex items-center justify-center text-sm gap-2 py-2 px-6 bg-brand text-text hover:text-text-hover font-bold cursor-pointer hover:brightness-110 active:scale-95 transition-all rounded-lg " onClick={do_something}>
         <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-device-floppy">
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />

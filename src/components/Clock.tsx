@@ -27,8 +27,8 @@ function CurrentDate() {
   }
 
   return (
-    <p className=" flex items-center justify-center gap-4 text-3xl font-semibold">
-      <Calendar size={32} className="text-text"/>
+    <p className=" flex items-center justify-center gap-4 text-2xl font-normal">
+      <Calendar size={20} className="text-text"/>
       {date}
     </p>
   );
@@ -55,7 +55,7 @@ const CurrentTime = () => {
   }, []);
 
   return (
-    <p className=" flex gap-4 text-3xl font-light text-text-hover">
+    <p className=" flex gap-4 text-2xl font-light text-text-hover">
       <strong>{time} </strong>
     </p>
   );

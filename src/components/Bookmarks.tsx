@@ -61,7 +61,7 @@ const Bookmarks = () => {
         const categoryLinks = Object.entries(categories[activeCategoryIndex][1]);
         if (num <= categoryLinks.length) {
           const url = categoryLinks[num - 1][1] as string;
-          window.open(url, '_blank');
+          window.open(url, '_self');
           setActiveCategoryIndex(null);
         } else if (num <= categories.length) {
           // If the number corresponds to another category, switch to it
