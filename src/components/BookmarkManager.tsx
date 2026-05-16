@@ -335,14 +335,14 @@ const BookmarkManager = forwardRef<BookmarkManagerHandle, BookmarkManagerProps>(
                       type="text"
                       defaultValue={name}
                       onBlur={(e) => handleUpdateItem(category, name, e.target.value, url as string)}
-                      className="bg-transparent border-b border-transparent focus:border-text-hover outline-none text-sm font-medium w-1/3"
+                      className="bg-transparent border-b border-transparent focus:border-text-hover outline-none text-sm font-medium w-24 sm:w-1/3 shrink-0"
                       placeholder="Name"
                     />
                     <input
                       type="text"
                       defaultValue={url as string}
                       onBlur={(e) => handleUpdateItem(category, name, name, e.target.value)}
-                      className="bg-transparent border-b border-transparent focus:border-text-hover outline-none text-xs text-text/70 w-full"
+                      className="bg-transparent border-b border-transparent focus:border-text-hover outline-none text-xs text-text/70 flex-1 min-w-0"
                       placeholder="URL"
                     />
                     <button

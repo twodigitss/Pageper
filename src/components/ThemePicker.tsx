@@ -20,9 +20,9 @@ const Theme_switcher = () => {
   };
 
   return (
-    <div className="grid grid-cols-2 gap-x-44 gap-y-8 py-4 w-fit mx-auto justify-items-center">
+    <div className="grid grid-cols-2 gap-x-8 md:gap-x-24 lg:gap-x-32 gap-y-6 md:gap-y-8 py-4 w-fit mx-auto justify-items-center">
       {themes.map((theme) => (
-        <label key={theme.id} className="flex flex-col items-center gap-6 cursor-pointer group w-24">
+        <label key={theme.id} className="flex flex-col items-center gap-4 md:gap-6 cursor-pointer group w-20 md:w-24">
           <div className="relative">
             <input 
               type="radio" 
@@ -33,14 +33,14 @@ const Theme_switcher = () => {
               defaultChecked={saved_theme === theme.id}
             />
             <div className={`
-              w-12 h-12 rounded-lg ${theme.colorClass} 
+              w-10 h-10 md:w-12 md:h-12 rounded-lg ${theme.colorClass} 
               border-2 border-transparent transition-all duration-300
               peer-checked:border-text-hover peer-checked:scale-110 peer-checked:shadow-lg
               group-hover:scale-105
             `} />
-            <div className="absolute inset-0 rounded-full bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="absolute inset-0 rounded-lg bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
-          <span className="text-[10px] font-bold tracking-wider text-text-hover text-center uppercase opacity-50 group-hover:opacity-100 transition-opacity">
+          <span className="text-[9px] md:text-[10px] font-bold tracking-wider text-text-hover text-center uppercase opacity-50 group-hover:opacity-100 transition-opacity">
             {theme.name}
           </span>
         </label>
