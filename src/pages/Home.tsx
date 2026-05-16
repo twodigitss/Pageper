@@ -37,7 +37,7 @@ const Home = () => {
 
       </div>
 
-      <div className="grid min-h-120 w-[calc(100%-20dvw)] place-content-center fixed top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 max-[700px]:relative max-[700px]:top-[60%]">
+      <div className="grid min-h-120 w-[calc(100%-20dvw)] place-content-center fixed top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 max-[700px]:top-[45%] max-[460px]:top-1/2 max-[460px]:w-[90dvw]">
         <Bookmarks />
       </div>
 

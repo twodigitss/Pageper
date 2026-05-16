@@ -80,7 +80,7 @@ const Bookmarks = () => {
   }, [currentBookmarks, activeCategoryIndex]);
 
   return (
-    <div className="flex flex-wrap flex-row justify-between w-full relative">
+    <div className="flex flex-wrap flex-row justify-between max-[460px]:justify-center w-full relative">
       {Object.entries(currentBookmarks).map(([category, links], catIdx) => {
         const isActive = activeCategoryIndex === catIdx;
         
