@@ -5,7 +5,7 @@ This Project was born as a small side project trying to learn how to use ReactJS
 <br><br>
 
 <div style="display:grid; place-items: center;">
-<img src="./public/new_demo.png" style="border: 3px solid black; border-radius:15px">
+<img src="./public/screenshots/home.png" style="border: 3px solid black; border-radius:15px">
 </div>
 <br><br>
 
