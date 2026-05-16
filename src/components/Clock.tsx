@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { Calendar } from 'lucide-react';
 
 function CurrentDate() {
   const [date, setDate] = useState(getFormattedDate(new Date()));
@@ -12,7 +13,7 @@ function CurrentDate() {
     return () => clearInterval(interval);
   }, []);
 
-  function getFormattedDate(dateObj) {
+  function getFormattedDate(dateObj: Date) {
     const months = [
       'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
       'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
@@ -26,7 +27,10 @@ function CurrentDate() {
   }
 
   return (
-    <p id="main_date">{date}</p>
+    <p className=" flex items-center justify-center gap-4 text-2xl font-normal">
+      <Calendar size={20} className="text-text"/>
+      {date}
+    </p>
   );
 }
 
@@ -51,8 +55,11 @@ const CurrentTime = () => {
   }, []);
 
   return (
-    <p id="main_clock"><strong>{time}</strong></p>
+    <p className=" flex gap-4 text-2xl font-light text-text-hover">
+      <strong>{time} </strong>
+    </p>
   );
+
 };
 
 export default CurrentDate; 
