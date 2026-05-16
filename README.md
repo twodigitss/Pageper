@@ -75,4 +75,4 @@ If its possible, add the output log of the console from `Inspect(Q) -> Console`.
 I am trying to be as active as i can.<br><br>
 
 ## ⚠️ Disclaimer
-Pageper fetches site icons exclusively through DuckDuckGo's favicon service. No other external requests are made — your bookmarks, settings, and preferences are stored locally in your browser and never leave your device.<br><br>
+Pageper fetches site icons exclusively through DuckDuckGo's favicon service. No other external requests are made. your bookmarks, settings, and preferences are stored locally in your browser and never leave your device.<br><br>
