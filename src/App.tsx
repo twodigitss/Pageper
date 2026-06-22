@@ -1,39 +1,27 @@
-import { Fragment, useState } from 'react'
+import { useState } from 'react'
 import user_pref from '@services/preferences'
 import Home from '@pages/Home';
 import Side_Menu from "@components/SideMenu";
 import AppSettings from "@components/SettingsModal";
+import { AppConfig } from '@type/config';
 import '@styles/index.css'
 
-//save defaults
-const default_data = JSON.stringify(user_pref);
-localStorage.setItem("pageper_defaults", default_data);
-
 function App() {
-const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-  
-  const openSettings = () => {
-    setIsSettingsOpen(true);
-  };
-  
-  const closeSettings = () => {
-    setIsSettingsOpen(false);
-  };  
-  
-  return (
-    <Fragment>
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  /* ponytail: Lift configuration state to propagate updates reactively without polling */
+  const [config, setConfig] = useState<AppConfig>(user_pref);
 
+  return (
+    <>
       <AppSettings 
         isOpen={isSettingsOpen} 
-        onClose={closeSettings} 
+        onClose={() => setIsSettingsOpen(false)} 
+        config={config}
+        onSaveConfig={setConfig}
       />
-
-
-      <Home/>
-      <Side_Menu openModal={openSettings}/>
-
-
-    </Fragment>
+      <Home config={config} />
+      <Side_Menu openModal={() => setIsSettingsOpen(true)}/>
+    </>
   )
 }
 

@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import user_pref from "@services/preferences";
-import useLocalS from '../hooks/useLocalStorage';
+import { AppConfig } from '../types/config';
 
 const getFaviconUrl = (url: string) => {
   try {
@@ -12,26 +11,18 @@ const getFaviconUrl = (url: string) => {
   }
 };
 
-const Bookmarks = () => {
-  const storedConfigRaw = useLocalS('pageper_external_conf', JSON.stringify(user_pref));
-  const [currentBookmarks, setCurrentBookmarks] = useState(user_pref.bookmarks);
-  const [showFavicons, setShowFavicons] = useState(user_pref.showFavicons !== undefined ? user_pref.showFavicons : true);
+interface BookmarksProps {
+  config: AppConfig;
+}
+
+/* ponytail: Lifted configuration state to App.tsx to remove localStorage polling entirely */
+const Bookmarks = ({ config }: BookmarksProps) => {
+  const currentBookmarks = config.bookmarks;
+  const showFavicons = config.showFavicons !== false;
   const [activeCategoryIndex, setActiveCategoryIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    try {
-      const parsed = JSON.parse(storedConfigRaw);
-      if (parsed.bookmarks) {
-        setCurrentBookmarks(parsed.bookmarks);
-      }
-      setShowFavicons(parsed.showFavicons !== undefined ? parsed.showFavicons : true);
-    } catch (e) {
-      console.error("Failed to parse updated config for bookmarks");
-    }
-  }, [storedConfigRaw]);
-
-  useEffect(() => {
-    let timeout: NodeJS.Timeout;
+    let timeout: ReturnType<typeof setTimeout> | undefined;
     
     const handleKeyDown = (e: KeyboardEvent) => {
       // Ignore if typing in an input or modal is open

@@ -2,29 +2,17 @@ import { useState, useEffect } from 'react';
 import { Calendar } from 'lucide-react';
 
 function CurrentDate() {
+  /* ponytail: Simplified date retrieval and format using standard library toLocaleDateString */
+  const getFormattedDate = (dateObj: Date) => 
+    dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
   const [date, setDate] = useState(getFormattedDate(new Date()));
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      const now = new Date();
-      setDate(getFormattedDate(now));
-    }, 1000);
-
+    // Only poll once a minute since date changes slowly
+    const interval = setInterval(() => setDate(getFormattedDate(new Date())), 60000);
     return () => clearInterval(interval);
   }, []);
-
-  function getFormattedDate(dateObj: Date) {
-    const months = [
-      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
-      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-    ];
-
-    const day = dateObj.getDate();
-    const month = months[dateObj.getMonth()];
-    const year = dateObj.getFullYear();
-
-    return `${month} ${day}, ${year}`;
-  }
 
   return (
     <p className=" flex items-center justify-center gap-4 text-2xl font-normal">
@@ -35,22 +23,14 @@ function CurrentDate() {
 }
 
 const CurrentTime = () => {
-  const [time, setTime] = useState(new Date().toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false
-  }));
+  /* ponytail: Simplified standard clock state */
+  const getFormattedTime = (dateObj: Date) => 
+    dateObj.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: false });
+
+  const [time, setTime] = useState(getFormattedTime(new Date()));
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      const now = new Date();
-      setTime(now.toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: false
-      }));
-    }, 1000);
-
+    const interval = setInterval(() => setTime(getFormattedTime(new Date())), 1000);
     return () => clearInterval(interval);
   }, []);
 
@@ -59,7 +39,6 @@ const CurrentTime = () => {
       <strong>{time} </strong>
     </p>
   );
-
 };
 
 export default CurrentDate; 

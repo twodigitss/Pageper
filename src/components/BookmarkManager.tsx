@@ -1,65 +1,32 @@
 import React, { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
 import { Plus, Trash2, Edit2, ChevronUp, ChevronDown, Download, Upload } from 'lucide-react';
 import { AppConfig } from '../types/config';
-import useLocalS from '../hooks/useLocalStorage';
 
 export interface BookmarkManagerHandle {
   save: () => void;
 }
 
 interface BookmarkManagerProps {
-  initialData?: AppConfig['bookmarks'];
-  onSave?: (data: AppConfig['bookmarks']) => void;
+  bookmarks: AppConfig['bookmarks'];
+  showFavicons: boolean;
+  onSave: (bookmarks: AppConfig['bookmarks'], showFavicons: boolean) => void;
 }
 
-const BookmarkManager = forwardRef<BookmarkManagerHandle, BookmarkManagerProps>(({ initialData = {}, onSave }, ref) => {
-  // Use useLocalS to track changes in localStorage for 'pageper_external_conf'
-  const storedConfigRaw = useLocalS('pageper_external_conf', JSON.stringify({ bookmarks: initialData, showFavicons: true }));
-  
-  // Helper to parse config from the raw string
-  const getConfigFromRaw = (raw: string): { bookmarks: AppConfig['bookmarks'], showFavicons: boolean } => {
-    try {
-      const parsed = JSON.parse(raw);
-      return {
-        bookmarks: parsed.bookmarks || initialData,
-        showFavicons: parsed.showFavicons !== undefined ? parsed.showFavicons : true
-      };
-    } catch (e) {
-      console.error("Error parsing config from localStorage:", e);
-      return { bookmarks: initialData, showFavicons: true };
-    }
-  };
-
-  const initialConfig = getConfigFromRaw(storedConfigRaw);
-  const [bookmarks, setBookmarks] = useState<AppConfig['bookmarks']>(initialConfig.bookmarks);
-  const [showFavicons, setShowFavicons] = useState<boolean>(initialConfig.showFavicons);
+/* ponytail: Removed useLocalS polling hook and replaced with direct props syncing */
+const BookmarkManager = forwardRef<BookmarkManagerHandle, BookmarkManagerProps>(({ bookmarks: initialBookmarks, showFavicons: initialShowFavicons, onSave }, ref) => {
+  const [bookmarks, setBookmarks] = useState<AppConfig['bookmarks']>(initialBookmarks);
+  const [showFavicons, setShowFavicons] = useState<boolean>(initialShowFavicons);
   const [editingCategory, setEditingCategory] = useState<string | null>(null);
   const [newCategoryName, setNewCategoryName] = useState('');
 
-  // Sync state if localStorage changes externally (monitored by useLocalS)
+  // Sync state if props change
   useEffect(() => {
-    const externalConfig = getConfigFromRaw(storedConfigRaw);
-    if (JSON.stringify(externalConfig.bookmarks) !== JSON.stringify(bookmarks)) {
-      setBookmarks(externalConfig.bookmarks);
-    }
-    if (externalConfig.showFavicons !== showFavicons) {
-      setShowFavicons(externalConfig.showFavicons);
-    }
-  }, [storedConfigRaw]);
+    setBookmarks(initialBookmarks);
+    setShowFavicons(initialShowFavicons);
+  }, [initialBookmarks, initialShowFavicons]);
 
   const handleSave = () => {
-    const currentRaw = localStorage.getItem('pageper_external_conf');
-    let currentConfig: Partial<AppConfig> = {};
-    try {
-      currentConfig = currentRaw ? JSON.parse(currentRaw) : {};
-    } catch (e) {
-      currentConfig = {};
-    }
-    
-    const newConfig = { ...currentConfig, bookmarks, showFavicons };
-    localStorage.setItem('pageper_external_conf', JSON.stringify(newConfig));
-    
-    if (onSave) onSave(bookmarks);
+    onSave(bookmarks, showFavicons);
   };
 
   const handleExport = () => {
@@ -364,7 +331,6 @@ const BookmarkManager = forwardRef<BookmarkManagerHandle, BookmarkManagerProps>(
           </div>
         ))}
       </div>
-
     </div>
   );
 });

@@ -1,28 +1,22 @@
 import { useRef, useEffect, useState } from "react";
-
-// import Load_local_configs, { Load_profile_picture } from "@components/ConfigLoaders";
 import Theme_switcher from "@components/ThemePicker";
 import BookmarkManager, { BookmarkManagerHandle } from './BookmarkManager';
-import template from '../config/template.json';
+import { AppConfig } from "../types/config";
 
 interface AppSettingsProps {
   isOpen: boolean;
   onClose: () => void;
+  config: AppConfig;
+  onSaveConfig: (newConfig: AppConfig) => void;
 }
 
 type TabType = 'bookmarks' | 'keybinds' | 'colorscheme' | 'help';
 
-function AppSettings({ isOpen, onClose }: AppSettingsProps){
+function AppSettings({ isOpen, onClose, config, onSaveConfig }: AppSettingsProps){
   const [activeTab, setActiveTab] = useState<TabType>('bookmarks');
 
-  const dialogRef = useRef<HTMLDialogElement>(null); //para referenciar al modal mismo
-  const usernameRef = useRef<HTMLInputElement>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
   const bookmarkRef = useRef<BookmarkManagerHandle>(null);
-
-  const col_text = useRef<HTMLInputElement>(null);
-  const col_hover = useRef<HTMLInputElement>(null);
-  const col_bg = useRef<HTMLInputElement>(null);
-  const col_bg2 = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (isOpen && dialogRef.current) {
@@ -33,21 +27,9 @@ function AppSettings({ isOpen, onClose }: AppSettingsProps){
   }, [isOpen]);
 
   const do_something = () => {
-    const username_mod = usernameRef.current?.value || "";
-
-    const colors_stored = {
-      text:  col_text.current?.value,
-      hover:  col_hover.current?.value,
-      bg:  col_bg.current?.value,
-      bg2:  col_bg2.current?.value,
-    }
-    
-    localStorage.setItem('pageper_username', username_mod)
-    localStorage.setItem('pageper_colors', JSON.stringify(colors_stored))
-    
+    /* ponytail: Cleaned up unused username/color refs and save logic */
     // Trigger bookmark save
     bookmarkRef.current?.save();
-    
     onClose();
   }
 
@@ -107,8 +89,13 @@ function AppSettings({ isOpen, onClose }: AppSettingsProps){
             <section className={activeTab === 'bookmarks' ? "block animate-in fade-in duration-300" : "hidden"}>
               <BookmarkManager 
                  ref={bookmarkRef}
-                 initialData={template.bookmarks} 
-                 onSave={(newData) => console.log('Bookmark guardado:', newData)} 
+                 bookmarks={config.bookmarks} 
+                 showFavicons={config.showFavicons !== false}
+                 onSave={(newBookmarks, showFavicons) => {
+                   const newConfig = { ...config, bookmarks: newBookmarks, showFavicons };
+                   localStorage.setItem('pageper_external_conf', JSON.stringify(newConfig, null, 2));
+                   onSaveConfig(newConfig);
+                 }} 
               />
             </section>
 
@@ -177,7 +164,7 @@ function AppSettings({ isOpen, onClose }: AppSettingsProps){
     </div>
 
     <div className="flex justify-between items-center mt-6 pt-4 border-t border-body">
-      <p className="text-[10px] opacity-30 italic">Pageper v0.4.2 - Experimental Build</p>
+      <p className="text-[10px] opacity-30 italic">Pageper v0.4.3</p>
       <button className="all-unset flex items-center justify-center text-sm gap-2 py-2 px-6 bg-brand text-text hover:text-text-hover font-bold cursor-pointer hover:brightness-110 active:scale-95 transition-all rounded-lg " onClick={do_something}>
         <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-device-floppy">
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
