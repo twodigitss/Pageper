@@ -62,8 +62,8 @@ function AppSettings({ isOpen, onClose }: AppSettingsProps){
     <dialog ref={dialogRef} onClose={onClose} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-4 md:p-6 gap-4 bg-bg-0 text-text rounded-lg w-[95%] md:w-[90%] max-w-5xl h-[90vh] md:h-[80vh] overflow-hidden z-1000 backdrop:bg-black/50 open:flex flex-col">
 
     <div className="flex flex-col md:flex-row flex-1 min-h-0 gap-4 md:gap-0">
-        <ul className="w-full md:w-48 text-sm font-medium text-body flex flex-row md:flex-col gap-1 border-b md:border-b-0 md:border-r border-body pb-2 md:pb-0 md:pr-4 overflow-x-auto md:overflow-x-visible flex-shrink-0">
-            <li className="flex-shrink-0 md:flex-shrink">
+        <ul className="w-full md:w-48 text-sm font-medium text-body flex flex-row md:flex-col gap-1 border-b md:border-b-0 md:border-r border-body pb-2 md:pb-0 md:pr-4 overflow-x-auto md:overflow-x-visible shrink-0">
+            <li className="shrink-0 md:shrink">
                 <button onClick={() => setActiveTab('bookmarks')} className={tabClass('bookmarks')}>
                   <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-bookmark">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -72,13 +72,13 @@ function AppSettings({ isOpen, onClose }: AppSettingsProps){
                     <span className="hidden sm:inline">Bookmarks</span>
                 </button>
             </li>
-            <li className="flex-shrink-0 md:flex-shrink">
+            <li className="shrink-0 md:shrink">
                 <button onClick={() => setActiveTab('colorscheme')} className={tabClass('colorscheme')}>
                     <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-palette"> <path stroke="none" d="M0 0h24v24H0z" fill="none" /> <path d="M12 21a9 9 0 0 1 0 -18c4.97 0 9 3.582 9 8c0 1.06 -.474 2.078 -1.318 2.828c-.844 .75 -1.989 1.172 -3.182 1.172h-2.5a2 2 0 0 0 -1 3.75a1.3 1.3 0 0 1 -1 2.25" /> <path d="M7.5 10.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /> <path d="M11.5 7.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /> <path d="M15.5 10.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /> </svg>
                     <span className="hidden sm:inline">Colorscheme</span>
                 </button>
             </li>
-            <li className="flex-shrink-0 md:flex-shrink">
+            <li className="shrink-0 md:shrink">
                 <button onClick={() => setActiveTab('keybinds')} className={tabClass('keybinds')}>
                     <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-square-f9">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -90,7 +90,7 @@ function AppSettings({ isOpen, onClose }: AppSettingsProps){
                     <span className="hidden sm:inline">Keybinds</span>
                 </button>
             </li>
-            <li className="flex-shrink-0 md:flex-shrink">
+            <li className="shrink-0 md:shrink">
                 <button onClick={() => setActiveTab('help')} className={tabClass('help')}>
                     <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-help">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none" />

@@ -9,6 +9,14 @@ const themes = [
   { id: 'gruvbox', name: 'Gruv Dark', colorClass: 'bg-gruv' },
   { id: 'catp_light', name: 'Catppuccin Light', colorClass: 'bg-catp-light' },
   { id: 'catp_dark', name: 'Catppuccin Dark', colorClass: 'bg-catp-dark' },
+  /* ponytail: Added popular theme configs directly */
+  { id: 'dracula', name: 'Dracula', colorClass: 'bg-dracula' },
+  { id: 'nord', name: 'Nord', colorClass: 'bg-nord' },
+  { id: 'tokyo', name: 'Tokyo Night', colorClass: 'bg-tokyo' },
+  { id: 'onedark', name: 'One Dark', colorClass: 'bg-onedark' },
+  { id: 'everforest', name: 'Everforest', colorClass: 'bg-everforest' },
+  { id: 'synthwave', name: 'Synthwave', colorClass: 'bg-synthwave' },
+  { id: 'solarized', name: 'Solarized', colorClass: 'bg-solarized' },
 ];
 
 const Theme_switcher = () => {

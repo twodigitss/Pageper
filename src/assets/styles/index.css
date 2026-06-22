@@ -9,11 +9,21 @@
   --color-diamond: hsl(201, 50%, 87%);
   --color-day: hsl(60, 100%, 90%);
   --color-night: hsl(214, 32%, 76%);
-  --color-gruv: hsl(157, 16%, 58%);
-  --color-rose: hsl(3, 53%, 67%);
+  /* ponytail: Tweaked theme color tokens for better premium palette match */
+  --color-gruv: hsl(108, 35%, 62%);
+  --color-rose: hsl(343, 76%, 68%);
   --color-biscuit: hsl(33, 74%, 58%);
-  --color-catp-light: hsl(96, 44%, 68%);
-  --color-catp-dark: hsl(316, 73%, 84%);
+  --color-catp-light: hsl(231, 97%, 72%);
+  --color-catp-dark: hsl(267, 84%, 81%);
+  /* ponytail: Added color tokens for popular themes */
+  --color-dracula: hsl(265, 89%, 78%);
+  --color-nord: hsl(193, 43%, 68%);
+  --color-tokyo: hsl(221, 92%, 72%);
+  --color-onedark: hsl(207, 82%, 66%);
+  /* ponytail: Added everforest, synthwave, solarized color tokens */
+  --color-everforest: hsl(83, 34%, 63%);
+  --color-synthwave: hsl(326, 100%, 74%);
+  --color-solarized: hsl(175, 74%, 39%);
 }
 
 :root {
@@ -26,11 +36,18 @@
   --diamond: hsl(201, 50%, 87%);
   --day: hsl(60, 100%, 90%);
   --night: hsl(214, 32%, 76%);
-  --gruv: hsl(157, 16%, 58%);
-  --rose: hsl(3, 53%, 67%);
+  --gruv: hsl(108, 35%, 62%);
+  --rose: hsl(343, 76%, 68%);
   --biscuit: hsl(33, 74%, 58%);
-  --catp_light: hsl(96, 44%, 68%);
-  --catp_dark: hsl(316, 73%, 84%);
+  --catp_light: hsl(231, 97%, 72%);
+  --catp_dark: hsl(267, 84%, 81%);
+  --dracula: hsl(265, 89%, 78%);
+  --nord: hsl(193, 43%, 68%);
+  --tokyo: hsl(221, 92%, 72%);
+  --onedark: hsl(207, 82%, 66%);
+  --everforest: hsl(83, 34%, 63%);
+  --synthwave: hsl(326, 100%, 74%);
+  --solarized: hsl(175, 74%, 39%);
 
   font-family: "Inter", "Arial", serif;
 }
@@ -44,53 +61,104 @@
 }
 
 [data-theme="dark"] {
-  --body: hsl(0, 0%, 10%);
+  --body: hsl(0, 0%, 6.7%);
   --bg_0: hsl(0, 0%, 12%);
   --text: hsl(0, 0%, 93%);
   --text_hover: var(--diamond);
 }
 
 [data-theme="gruvbox"] {
-  --body: hsl(30, 9%, 16%);
-  --bg_0: hsl(30, 6%, 22%);
-  --text: hsl(48, 87%, 88%);
+  --body: hsl(0, 0%, 15%);
+  --bg_0: hsl(20, 7%, 20%);
+  --text: hsl(45, 60%, 82%);
   --text_hover: var(--gruv);
 }
 
 [data-theme="gruvbox_light"] {
   --body: hsl(48, 74%, 91%);
-  --bg_0: hsl(48, 56%, 80%);
-  --text: hsl(30, 9%, 16%);
+  --bg_0: hsl(44, 48%, 80%);
+  --text: hsl(28, 14%, 19%);
   --text_hover: var(--gruv);
 }
 
 [data-theme="rosepine"] {
-  --body: hsl(32, 57%, 95%);
-  --bg_0: hsl(32, 43%, 91%);
-  --text: hsl(249, 22%, 40%);
+  --body: hsl(248, 25%, 12%);
+  --bg_0: hsl(248, 25%, 18%);
+  --text: hsl(245, 50%, 91%);
   --text_hover: var(--rose);
 }
 
 [data-theme="biscuit"] {
-  --body: hsl(0, 8%, 9%);
-  --bg_0: hsl(0, 8%, 12%);
-  --text: hsl(33, 74%, 89%);
-  --text_hover: var(--rose);
+  --body: hsl(28, 14%, 11%);
+  --bg_0: hsl(28, 14%, 15%);
+  --text: hsl(33, 30%, 83%);
+  --text_hover: var(--biscuit);
 }
 
 [data-theme="catp_light"] {
-  --body: hsl(220, 23%, 90%);
-  --bg_0: hsl(220, 23%, 93%);
-  --text: hsl(234, 16%, 35%);
+  --body: hsl(220, 23%, 95%);
+  --bg_0: hsl(220, 23%, 89%);
+  --text: hsl(233, 16%, 35%);
   --text_hover: var(--catp_light);
 }
 
 [data-theme="catp_dark"] {
-  --body: hsl(240, 21%, 8%);
-  --bg_0: hsl(237, 16%, 13%);
+  --body: hsl(240, 21%, 15%);
+  --bg_0: hsl(240, 21%, 11%);
   --text: hsl(226, 64%, 88%);
   --text_hover: var(--catp_dark);
 }
+
+[data-theme="dracula"] {
+  --body: hsl(231, 15%, 18%);
+  --bg_0: hsl(231, 15%, 22%);
+  --text: hsl(60, 30%, 96%);
+  --text_hover: var(--dracula);
+}
+
+[data-theme="nord"] {
+  --body: hsl(220, 16%, 22%);
+  --bg_0: hsl(220, 16%, 26%);
+  --text: hsl(218, 27%, 88%);
+  --text_hover: var(--nord);
+}
+
+[data-theme="tokyo"] {
+  --body: hsl(234, 19%, 12%);
+  --bg_0: hsl(234, 19%, 16%);
+  --text: hsl(228, 24%, 75%);
+  --text_hover: var(--tokyo);
+}
+
+[data-theme="onedark"] {
+  --body: hsl(220, 13%, 18%);
+  --bg_0: hsl(220, 13%, 22%);
+  --text: hsl(219, 14%, 71%);
+  --text_hover: var(--onedark);
+}
+
+[data-theme="everforest"] {
+  --body: hsl(200, 9%, 19%);
+  --bg_0: hsl(200, 13%, 23%);
+  --text: hsl(42, 29%, 75%);
+  --text_hover: var(--everforest);
+}
+
+[data-theme="synthwave"] {
+  --body: hsl(251, 20%, 17%);
+  --bg_0: hsl(252, 25%, 20%);
+  --text: hsl(0, 0%, 100%);
+  --text_hover: var(--synthwave);
+}
+
+[data-theme="solarized"] {
+  --body: hsl(192, 100%, 11%);
+  --bg_0: hsl(192, 81%, 14%);
+  --text: hsl(186, 7%, 55%);
+  --text_hover: var(--solarized);
+}
+
+
 
 @layer base {
   body {
