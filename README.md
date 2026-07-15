@@ -17,7 +17,7 @@ to manage your bookmarks. This is friction and innecesary infrastructure for one
 <br>
 
 This type of tools are meant to be lightweight and operate with the least friction possible between intention and execution.<br>
-Pageper tries actively to mititgate all of the previous problems listed above.
+Pageper tries actively to mititgate all of the previous problems listed above, trying to help users to stay focused by reducing cognitive noise .
 <br><br>
 
 ### Why Pageper?
